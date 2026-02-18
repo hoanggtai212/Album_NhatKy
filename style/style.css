@@ -113,7 +113,8 @@ body {
   flex-shrink: 0;
 }
   
-.page .front {
+.page .front,
+.page .back {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -133,3 +134,4 @@ body {
   padding: 20px;
   box-sizing: border-box;
 }
+
