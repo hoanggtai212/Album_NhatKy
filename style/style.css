@@ -108,3 +108,11 @@ body {
   font-size: 14px;
   color: #777;
 }
+
+.caption {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+  
