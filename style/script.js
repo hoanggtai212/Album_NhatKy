@@ -58,10 +58,16 @@ front.appendChild(caption);
   const back = document.createElement('div');
   back.className = 'back';
   if (images[i + 1]) {
-    const backImg = document.createElement('img');
-    backImg.src = images[i + 1];
-    back.appendChild(backImg);
-  }
+  const backImg = document.createElement('img');
+  backImg.src = images[i + 1];
+
+  const backCaption = document.createElement('div');
+  backCaption.className = 'caption';
+  backCaption.innerText = '🎂 30-12-2012';
+
+  back.appendChild(backImg);
+  back.appendChild(backCaption);
+}
 
   page.appendChild(front);
   page.appendChild(back);
@@ -151,4 +157,5 @@ pages.forEach((page) => {
   });
 
 });
+
 
