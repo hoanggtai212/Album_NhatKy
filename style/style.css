@@ -106,8 +106,9 @@ body {
 .end-content span {
   font-size: 14px;
   color: #777;
+}
 
-  .photo-date {
+.photo-date {
   height: 15%;
   display: flex;
   align-items: center;
@@ -115,9 +116,10 @@ body {
   font-size: 14px;
   color: #555;
   font-style: italic;
-  }
+}
   
 }
+
 
 
 
