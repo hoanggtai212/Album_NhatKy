@@ -120,7 +120,7 @@ pages.forEach((page) => {
         setTimeout(() => typewriterEffect(content, endText), 800);
         typed = true;
       }
-
+}
   };
 
   const flipBackward = () => {
@@ -145,6 +145,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
