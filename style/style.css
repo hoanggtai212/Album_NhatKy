@@ -45,10 +45,12 @@ body {
   padding: 20px;
 }
 
-
+.page {
+  transform-origin: right;   /* lật từ cạnh phải */
+}
 
 .page.flipped {
-  transform: rotateY(-180deg);
+  transform: rotateY(-150deg); /* không cần -180 */
 }
 
 .intro-content, .end-content {
@@ -101,6 +103,7 @@ body {
   font-style: italic;
 }
   
+
 
 
 
