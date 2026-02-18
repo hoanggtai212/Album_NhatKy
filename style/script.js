@@ -122,7 +122,7 @@ pages.forEach((page) => {
       }
 
       setTimeout(() => {
-  page.style.zIndex = page.dataset.originalZ - 100;
+  page.style.zIndex = 0;
 }, 1000);
     }
   };
@@ -149,5 +149,6 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
