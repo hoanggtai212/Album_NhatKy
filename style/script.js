@@ -119,14 +119,14 @@ endPage.appendChild(endBack);
 book.appendChild(endPage);
 pages.push(endPage);
 
-function typewriterEffect(text, element, normalSpeed = 40) {
+function typewriterEffect(text, element, normalSpeed = 25) {
   let i = 0;
 
   function type() {
     if (i >= text.length) return;
 
     // 🎯 Xử lý "còn em"
-    if (text.substring(i, i + 7) === "còn em") {
+    if (text.substring(i).startsWith("còn em")) {
       const phrase = "còn em";
       let j = 0;
 
@@ -146,7 +146,7 @@ function typewriterEffect(text, element, normalSpeed = 40) {
     }
 
     // 🎯 Nếu gặp dấu ...
-    if (text.substring(i, i + 3) === "...") {
+    if (text.substring(i).startsWith("...")) {
       let dotCount = 0;
 
       function typeDots() {
@@ -221,6 +221,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
