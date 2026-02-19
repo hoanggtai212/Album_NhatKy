@@ -122,32 +122,49 @@ pages.push(endPage);
 function typewriterEffect(text, element, normalSpeed = 40) {
   let i = 0;
 
+  const slowText = "còn em ";
+  const slowDuration = 3000; // 3 giây cho cả cụm
+  const dotDelay = 1500;     // 1.5 giây mỗi dấu chấm
+
   function type() {
-    if (i < text.length) {
+    if (i >= text.length) return;
 
-      let currentSpeed = normalSpeed;
+    // Nếu đang ở đoạn "còn em "
+    if (text.substring(i, i + slowText.length) === slowText) {
+      let perCharSpeed = slowDuration / slowText.length;
 
-      const slowPhrase = "còn em ...";
-
-      // Làm chậm đoạn "còn em ..."
-      if (text.substring(i, i + slowPhrase.length) === slowPhrase) {
-        currentSpeed = 150;
+      let j = 0;
+      function typeSlowPart() {
+        if (j < slowText.length) {
+          element.innerHTML += slowText[j];
+          j++;
+          setTimeout(typeSlowPart, perCharSpeed);
+        } else {
+          i += slowText.length;
+          type();
+        }
       }
 
-      // Dừng lâu hơn ở dấu ...
-      if (text.substring(i, i + 3) === "...") {
-        currentSpeed = 500;
-      }
-
-      element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
-      i++;
-      setTimeout(type, currentSpeed);
+      typeSlowPart();
+      return;
     }
+
+    // Nếu gặp dấu chấm
+    if (text[i] === ".") {
+      element.innerHTML += ".";
+      i++;
+      setTimeout(type, dotDelay);
+      return;
+    }
+
+    // Bình thường
+    element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
+    i++;
+    setTimeout(type, normalSpeed);
   }
 
   type();
 }
-
 
 
 let currentTopZ = 200;
@@ -197,6 +214,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
