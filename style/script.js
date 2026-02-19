@@ -32,9 +32,30 @@ book.appendChild(introPage);
 pages.push(introPage);
 
 const images = [];
-for (let i = 1; i <= 18; i++) { //Chỉnh số lượng ảnh ở đây
+for (let i = 1; i <= 20; i++) { //Chỉnh số lượng ảnh ở đây
   images.push(`./style/image/Anh (${i}).jpg`);
 }
+
+const dates = [
+  "30-12-2012",
+  "14-02-2013",
+  "18-06-2014",
+  "01-01-2015",
+  "12-09-2016",
+  "03-03-2017",
+  "22-07-2018",
+  "10-10-2019",
+  "15-05-2020",
+  "08-08-2021",
+  "11-11-2022",
+  "25-12-2023",
+  "01-01-2024",
+  "14-02-2024",
+  "30-04-2024",
+  "01-06-2024",
+  "20-10-2024",
+  "01-01-2025"
+];
 
 for (let i = 0; i < images.length; i += 2) {
   const page = document.createElement('div');
@@ -50,7 +71,7 @@ for (let i = 0; i < images.length; i += 2) {
   
 const caption = document.createElement('div');
 caption.className = 'caption';
-caption.innerText = '🎂 30-12-2012';
+caption.innerText = `🎂 ${dates[i]}`;
   
   front.appendChild(frontImg);
 front.appendChild(caption);
@@ -63,7 +84,7 @@ front.appendChild(caption);
 
   const backCaption = document.createElement('div');
   backCaption.className = 'caption';
-  backCaption.innerText = '🎂 30-12-2012';
+  backCaption.innerText = `🎂 ${dates[i + 1]}`;
 
   back.appendChild(backImg);
   back.appendChild(backCaption);
@@ -157,6 +178,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
