@@ -122,38 +122,42 @@ pages.push(endPage);
 function typewriterEffect(text, element, normalSpeed = 40) {
   let i = 0;
 
-  const slowText = "còn em ";
-  const slowDuration = 3000; // 3 giây cho cả cụm
-  const dotDelay = 1500;     // 1.5 giây mỗi dấu chấm
-
   function type() {
     if (i >= text.length) return;
 
-    // Nếu đang ở đoạn "còn em "
-    if (text.substring(i, i + slowText.length) === slowText) {
-      let perCharSpeed = slowDuration / slowText.length;
-
+    // 🎯 Xử lý đoạn "còn em"
+    if (text.substring(i, i + 7) === "còn em") {
+      const phrase = "còn em";
       let j = 0;
-      function typeSlowPart() {
-        if (j < slowText.length) {
-          element.innerHTML += slowText[j];
+
+      function typePhrase() {
+        if (j < phrase.length) {
+          element.innerHTML += phrase[j];
           j++;
-          setTimeout(typeSlowPart, perCharSpeed);
+          setTimeout(typePhrase, 500); // mỗi chữ 0.5s
         } else {
-          i += slowText.length;
-          type();
+          i += phrase.length;
+
+          // Dừng 4.5 giây sau khi gõ xong "còn em"
+          setTimeout(type, 4500);
         }
       }
 
-      typeSlowPart();
+      typePhrase();
       return;
     }
 
-    // Nếu gặp dấu chấm
+    // 🎯 Nếu gặp dấu chấm
     if (text[i] === ".") {
       element.innerHTML += ".";
       i++;
-      setTimeout(type, dotDelay);
+      setTimeout(type, 2000); // mỗi dấu 2 giây
+      return;
+    }
+
+    // 🎯 Sau dấu chấm cuối dừng thêm 1.5s trước khi bung câu sau
+    if (text.substring(i - 3, i) === "...") {
+      setTimeout(type, 1500);
       return;
     }
 
@@ -165,6 +169,7 @@ function typewriterEffect(text, element, normalSpeed = 40) {
 
   type();
 }
+
 
 
 let currentTopZ = 200;
@@ -214,6 +219,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
