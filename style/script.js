@@ -119,52 +119,29 @@ endPage.appendChild(endBack);
 book.appendChild(endPage);
 pages.push(endPage);
 
-function typewriterEffect(text, element, normalSpeed = 25) {
+function typewriterEffect(text, element, normalSpeed = 80) {
   let i = 0;
 
   function type() {
     if (i >= text.length) return;
 
-    // 🎯 Xử lý "còn em"
-    if (text.substring(i).startsWith("còn em")) {
-      const phrase = "còn em";
-      let j = 0;
-
-      function typePhrase() {
-        if (j < phrase.length) {
-          element.innerHTML += phrase[j];
-          j++;
-          setTimeout(typePhrase, 500); // 0.5s mỗi chữ
-        } else {
-          i += phrase.length;
-          setTimeout(type, 4500); // dừng 4.5s
-        }
-      }
-
-      typePhrase();
+    // 🎯 Nếu gặp "còn em"
+    if (text.startsWith("còn em", i)) {
+      element.innerHTML += "còn em";
+      i += 6;
+      setTimeout(type, 200); // chậm hơn bình thường
       return;
     }
 
-    // 🎯 Nếu gặp dấu ...
-    if (text.substring(i).startsWith("...")) {
-      let dotCount = 0;
-
-      function typeDots() {
-        if (dotCount < 3) {
-          element.innerHTML += ".";
-          dotCount++;
-          setTimeout(typeDots, 2000); // mỗi dấu 2s
-        } else {
-          i += 3;
-          setTimeout(type, 1500); // dừng thêm 1.5s sau ...
-        }
-      }
-
-      typeDots();
+    // 🎯 Nếu gặp "..."
+    if (text.startsWith("...", i)) {
+      element.innerHTML += "...";
+      i += 3;
+      setTimeout(type, 350); // chậm hơn nữa
       return;
     }
 
-    // Bình thường
+    // bình thường
     element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
     i++;
     setTimeout(type, normalSpeed);
@@ -221,6 +198,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
