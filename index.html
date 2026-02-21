@@ -9,37 +9,74 @@
 </head>
 <body>
 
-  <!-- 🔐 Màn hình nhập pass -->
+  <!-- 🔐 LOCK SCREEN -->
   <div id="lock-screen">
     <h2>Nhập mã khoá</h2>
-    <input type="password" id="passwordInput" maxlength="4">
-    <button onclick="checkPassword()">Mở khoá</button>
-    <p id="error"></p>
+
+    <div id="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="keypad">
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
+      <button class="empty"></button>
+      <button onclick="enterNumber(0)">0</button>
+      <button onclick="deleteNumber()">⌫</button>
+    </div>
   </div>
 
-  <!-- 📖 Album (ẩn ban đầu) -->
-  <div id="album" style="display:none;">
-    <div class="book" id="book"></div>
-  </div>
+  <!-- 📖 Album -->
+  <div class="book" id="book"></div>
 
   <audio id="sound" loop>
     <source src="./style/KhoBau.mp3" type="audio/mpeg" />
   </audio>
 
-  <script src="./style/script.js"></script>
+  <script src="./style/script.js" defer></script>
 
-  <!-- 🔐 Script mở khoá -->
+  <!-- 🔐 PASS SCRIPT -->
   <script>
-    function checkPassword() {
-      const correctPass = "1234"; // 👉 đổi mật khẩu ở đây
-      const input = document.getElementById("passwordInput").value;
+    let inputPass = "";
+    const correctPass = "1234"; // 👉 đổi mật khẩu ở đây
 
-      if (input === correctPass) {
-        document.getElementById("lock-screen").style.display = "none";
-        document.getElementById("album").style.display = "block";
-      } else {
-        document.getElementById("error").innerText = "Sai mật khẩu rồi 😜";
+    function enterNumber(num) {
+      if (inputPass.length >= 4) return;
+
+      inputPass += num;
+      updateDots();
+
+      if (inputPass.length === 4) {
+        if (inputPass === correctPass) {
+          document.getElementById("lock-screen").style.display = "none";
+        } else {
+          inputPass = "";
+          updateDots();
+          alert("Sai mật khẩu 😜");
+        }
       }
+    }
+
+    function deleteNumber() {
+      inputPass = inputPass.slice(0, -1);
+      updateDots();
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll("#dots span");
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("filled", index < inputPass.length);
+      });
     }
   </script>
 
