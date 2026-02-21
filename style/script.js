@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
@@ -201,6 +202,7 @@ pages.forEach((page) => {
     else if (diff > 30) flipBackward();
   });
 
+});
 });
 
 
