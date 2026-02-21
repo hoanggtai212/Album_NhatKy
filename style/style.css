@@ -8,7 +8,7 @@
 }
 body {
   margin: 0;
-  background: #f0ebe3;
+  background: #ffeaf6;
   display: flex;
   
   height: 100vh;
@@ -137,7 +137,7 @@ body {
 #lock-screen {
   position: fixed;
   inset: 0;
-  background: #f5f1ea;
+  background: linear-gradient(135deg, #ffd6ec, #ffeaf6);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +148,7 @@ body {
 #lock-screen h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #444;
+  color: #ff1493;
 }
 
 #dots {
@@ -160,12 +160,12 @@ body {
 #dots span {
   width: 18px;
   height: 18px;
-  border: 2px solid #d8b4e2;
+  border: 2px solid #ff69b4;
   border-radius: 50%;
 }
 
 #dots span.filled {
-  background: #d8b4e2;
+  background: #ff69b4;
 }
 
 .keypad {
@@ -178,20 +178,22 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #d8b4e2;
-  background: transparent;
+  border: 3px solid #ff69b4;
+  background: #fff0f7;
   font-size: 22px;
-  color: #b07bc1;
+  color: #ff1493;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .keypad button:active {
-  background: #d8b4e2;
+  background: #ff69b4;
   color: white;
+  transform: scale(0.95);
 }
 
 .keypad .empty {
   visibility: hidden;
 }
+
 
