@@ -159,15 +159,16 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* đổi từ space-between -> center */
+  justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;   /* giảm từ 30px xuống 20px */
 }
 
 #dots {
   display: flex;
   gap: 15px;
-  margin-bottom: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 #dots span {
@@ -228,6 +229,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
