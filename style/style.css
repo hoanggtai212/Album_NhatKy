@@ -139,13 +139,18 @@ body {
 #lock-screen {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #ffd6ec, #ffeaf6);
+
+  background:
+    url('./image/kitty.png') no-repeat center 65%,
+    linear-gradient(135deg, #ffd6ec, #ffeaf6);
+
+  background-size: 250px, cover;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  z-index: 9999; /* THÊM DÒNG NÀY */
+  z-index: 9999;
 }
 
 #lock-screen h2 {
@@ -207,7 +212,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('./style/image/kitty.png') no-repeat center;
+  background: url('./image/kitty.png') no-repeat center;
   background-size: 65%;
   opacity: 0.25;
   pointer-events: none;
@@ -219,6 +224,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
