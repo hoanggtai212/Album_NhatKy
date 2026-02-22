@@ -138,10 +138,12 @@ body {
   height: 100dvh;
 
   background:
-    url('./image/kitty.png') no-repeat center 65%,
-    linear-gradient(135deg, #ffd6ec, #ffeaf6);
+    linear-gradient(135deg, #ffd6ec, #ffeaf6),
+    url('./image/kitty.png');
 
-  background-size: 250px, cover;
+  background-size: cover, cover;   /* cho cả 2 layer */
+  background-position: center, center;
+  background-repeat: no-repeat;
 
   display: grid;
   place-items: center;
@@ -223,6 +225,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
