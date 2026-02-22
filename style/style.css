@@ -7,6 +7,11 @@
   font-family: 'Pacifico', cursive;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   background: #ffeaf6;
@@ -135,10 +140,11 @@ body {
 #lock-screen {
   position: fixed;
   inset: 0;
-  height: 100dvh;
+  width: 100%;
+  height: 100dvh;   /* dùng dvh thay vì vh */
+  overflow: hidden;
 
-  background: #f8cfe0; /* nền hồng nhạt giống ảnh 2 */
-
+  background: #f8cfe0;
   z-index: 9999;
 }
 
@@ -176,31 +182,13 @@ body {
   background: #ff69b4;
 }
 
-.keypad::before {
-  content: "";
-  position: absolute;
-
-  width: 280px;
-  height: 350px;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background: url('./image/kitty.png') no-repeat center;
-  background-size: cover;
-
-  opacity: 0.35;
-  border-radius: 20px;
-
-  z-index: -1;
-}
-
 .keypad button {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 18vw;
+  height: 18vw;
+  max-width: 80px;
+  max-height: 80px;
 
+  border-radius: 50%;
   border: 3px solid #ff69b4;
   background: rgba(255,255,255,0.6);
 
@@ -213,13 +201,35 @@ body {
   transform: scale(0.95);
 }
 
+
+.keypad {
+  position: absolute;
+  left: 50%;
+  top: 55%; /* chỉnh số này nếu muốn cao/thấp hơn */
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 20px;
+}
+
 .keypad::before {
   content: "";
   position: absolute;
-  inset: 0;
 
-  opacity: 0.35;
-  pointer-events: none;
+  width: 320px;
+  height: 420px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: url('./image/kitty.png') no-repeat center;
+  background-size: contain;
+
+  opacity: 0.25;
+  border-radius: 20px;
+
   z-index: -1;
 }
 
@@ -228,19 +238,5 @@ body {
     background-size: 80%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
