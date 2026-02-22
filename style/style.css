@@ -10,10 +10,6 @@
 body {
   margin: 0;
   background: #ffeaf6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 
@@ -139,6 +135,7 @@ body {
 #lock-screen {
   position: fixed;
   inset: 0;
+  height: 100dvh;
 
   background:
     url('./image/kitty.png') no-repeat center 65%,
@@ -146,9 +143,8 @@ body {
 
   background-size: 250px, cover;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
 
   z-index: 9999;
 }
@@ -227,6 +223,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
