@@ -246,16 +246,25 @@ pages.forEach((page) => {
   const front = page.querySelector('.front');
   const back = page.querySelector('.back');
 
+let isFlipped = false;
+let isFlippingForward = false;
+let isFlippingBackward = false;
+  
 const flipForward = () => {
+
+  if (isFlippingBackward) return; // đang lật ngược thì không cho lật xuôi
 
   if (flippingPages.has(page)) return;
 
   if (!page.classList.contains('flipped')) {
 
+    isFlippingForward = true;
+
     flippingPages.add(page);
 
     setTimeout(() => {
       flippingPages.delete(page);
+      isFlippingForward = false;
     }, 1200);
 
     if (page === pages[pages.length - 2] && !typed) {
@@ -289,14 +298,19 @@ const flipForward = () => {
 
 const flipBackward = () => {
 
+  if (isFlippingForward) return; // đang lật xuôi thì không cho lật ngược
+
   if (flippingPages.has(page)) return;
 
   if (page.classList.contains('flipped')) {
+
+    isFlippingBackward = true;
 
     flippingPages.add(page);
 
     setTimeout(() => {
       flippingPages.delete(page);
+      isFlippingBackward = false;
     }, 500);
 
     page.classList.add('fast');
@@ -372,6 +386,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
