@@ -321,10 +321,17 @@ const flipBackward = () => {
   }
 };
 
-  front.addEventListener('click', flipForward);
-  back.addEventListener('click', flipBackward);
+front.addEventListener('click', () => {
+  if (!page.classList.contains('flipped')) {
+    flipForward();
+  }
+});
 
-
+back.addEventListener('click', () => {
+  if (page.classList.contains('flipped')) {
+    flipBackward();
+  }
+});
   
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -332,8 +339,12 @@ const flipBackward = () => {
 
   page.addEventListener('touchend', (e) => {
     const diff = e.changedTouches[0].clientX - startX;
-    if (diff < -30) flipForward();
-    else if (diff > 30) flipBackward();
+    if (diff < -30 && !page.classList.contains('flipped')) {
+  flipForward();
+}
+else if (diff > 30 && page.classList.contains('flipped')) {
+  flipBackward();
+}
   });
 
 });
@@ -386,6 +397,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
